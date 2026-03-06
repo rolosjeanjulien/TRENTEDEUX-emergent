@@ -1,0 +1,24 @@
+# Robots.txt pour Trente Deux
+# https://luxury-legal-preview.preview.emergentagent.com/robots.txt
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /*.json$
+
+# Sitemap
+Sitemap: https://luxury-legal-preview.preview.emergentagent.com/sitemap.xml
+
+# Crawl delay (optionnel)
+Crawl-delay: 1
+
+# Directives spécifiques pour Google
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+
+# Directives spécifiques pour Bing
+User-agent: Bingbot
+Allow: /
+Disallow: /api/

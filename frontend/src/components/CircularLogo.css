@@ -1,0 +1,22 @@
+/* Circular Logo - CSS-only animation */
+
+.circular-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.circular-logo__ring {
+  transform-origin: center;
+  animation: logo-rotate 28s linear infinite;
+}
+
+@keyframes logo-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
