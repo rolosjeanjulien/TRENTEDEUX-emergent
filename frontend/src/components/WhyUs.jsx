@@ -138,25 +138,13 @@ export const WhyUs = () => {
         </motion.div>
 
         {/* Separator — Ils nous font confiance */}
-        <motion.div
-          className="max-w-5xl mx-auto mb-16 flex flex-col items-center gap-5"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.7 }}
-        >
+        <div className="max-w-5xl mx-auto mb-16 flex flex-col items-center gap-5">
           <div className="w-full h-[1px] bg-[#D9C2A7]/50" />
           <h3 className="text-2xl md:text-3xl font-playfair text-[#1A1A1A] tracking-wide text-center">
             Ils nous font confiance
           </h3>
-          <motion.div
-            className="w-8 h-[1px] bg-[#006618]"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          />
-        </motion.div>
+          <div className="w-8 h-[1px] bg-[#006618]" />
+        </div>
 
         {/* Testimonials */}
         <motion.div
