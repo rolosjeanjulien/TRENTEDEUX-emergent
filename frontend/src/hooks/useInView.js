@@ -5,10 +5,14 @@ export const useInView = (options = {}) => {
   const [isInView, setIsInView] = useState(false);
 
   useEffect(() => {
+    // Le scroll se fait dans .App, pas dans la fenêtre.
+    // L'IntersectionObserver doit utiliser .App comme root
+    // pour détecter correctement les éléments qui entrent en vue.
+    const scrollContainer = document.querySelector('.App') || null;
+
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         setIsInView(true);
-        // Une fois visible, on peut arrêter d'observer
         if (options.once) {
           observer.disconnect();
         }
@@ -16,6 +20,7 @@ export const useInView = (options = {}) => {
         setIsInView(false);
       }
     }, {
+      root: scrollContainer,
       threshold: options.threshold || 0.1,
       rootMargin: options.rootMargin || '0px'
     });
