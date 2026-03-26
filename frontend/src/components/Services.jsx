@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Building2, Landmark, Handshake, ArrowRightLeft, FileText } from 'lucide-react';
+import { Building2, Landmark, Handshake, ArrowRightLeft } from 'lucide-react';
 import { useInView } from '../hooks/useInView';
 
 export const Services = () => {
@@ -8,14 +8,9 @@ export const Services = () => {
   
   const services = [
     {
-      icon: FileText,
-      title: "Création et structuration de SEL / SPFPL",
-      description: "Vous envisagez de passer en société ou de créer une holding dentaire ? Nous choisissons avec vous la forme la plus adaptée à votre situation et coordonnons la mise en place.",
-    },
-    {
       icon: Landmark,
-      title: "Holding dentaire : optimiser et protéger",
-      description: "Une holding bien conçue sépare les risques, optimise la remontée des bénéfices et prépare l'avenir. Nous en construisons l'architecture dès le départ.",
+      title: "Création et structuration",
+      description: "Vous envisagez de passer en société ou de créer une structure dentaire ? Nous choisissons avec vous la forme la plus adaptée à votre situation et coordonnons la mise en place.",
     },
     {
       icon: Handshake,
@@ -29,8 +24,8 @@ export const Services = () => {
     },
     {
       icon: Building2,
-      title: "Transmettre au meilleur prix, au bon moment",
-      description: "La cession d'un cabinet dentaire ne s'improvise pas. Nous pilotons la préparation 2 à 5 ans en amont pour maximiser la valorisation et sécuriser la transition.",
+      title: "Transmettre à la meilleure valeur, au bon moment",
+      description: "La cession d'un cabinet dentaire ne s'improvise pas. Nous la pilotons ensemble pour maximiser la valorisation et sécuriser la transition.",
     }
   ];
 
