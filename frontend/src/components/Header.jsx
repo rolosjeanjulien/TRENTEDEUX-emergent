@@ -31,9 +31,9 @@ export const Header = ({ onContactClick }) => {
   };
 
   const navItems = [
-    { label: 'Mission', section: 'journey' },
-    { label: 'Interventions', section: 'services' },
-    { label: 'Pourquoi nous', section: 'whyus' },
+    { label: 'Votre parcours', section: 'journey' },
+    { label: 'Ce que nous faisons', section: 'services' },
+    { label: 'Pourquoi Trente Deux', section: 'whyus' },
   ];
 
   return (
@@ -89,7 +89,7 @@ export const Header = ({ onContactClick }) => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Contact
+              Prendre contact
             </motion.button>
           </nav>
 
@@ -128,7 +128,7 @@ export const Header = ({ onContactClick }) => {
                 data-testid="header-contact-button-mobile"
                 className="bg-[#122D18] hover:bg-[#0D1F12] text-white px-6 py-2 rounded-full transition-all duration-300 text-center"
               >
-                Contact
+                Prendre contact
               </button>
             </motion.nav>
           )}

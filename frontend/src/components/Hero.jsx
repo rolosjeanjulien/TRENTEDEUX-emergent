@@ -63,25 +63,25 @@ export const Hero = ({ onContactClick }) => {
           transition={{ duration: 0.8, delay: 1.0 }}
         />
         
-        <motion.p 
+        <motion.p
           className="hero-subtitle text-[#F5F1E9] text-xl md:text-2xl mb-8 font-light tracking-wide max-w-3xl mx-auto"
           initial={{ opacity: 0, y: 25, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.9, delay: 1.1 }}
         >
-          Maison de structuration stratégique<br />
-          pour chirurgiens-dentistes et orthodontistes
+          Vous exercez depuis des années.<br />
+          Votre structure, elle, n'a jamais été optimisée pour vous.
         </motion.p>
-        
-        <motion.p 
+
+        <motion.p
           className="hero-tagline text-[#D9C2A7] text-lg md:text-xl mb-12 font-light italic max-w-2xl mx-auto"
           initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.9, delay: 1.4 }}
         >
-          Votre cabinet mérite une architecture à la hauteur de votre exigence.
+          SEL, holding, pacte d'associés, transmission — nous construisons l'architecture que personne autour de vous ne coordonne vraiment.
         </motion.p>
-        
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -89,12 +89,12 @@ export const Hero = ({ onContactClick }) => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <button 
+          <button
             onClick={onContactClick}
             data-testid="hero-cta-button"
             className="cta-button bg-[#122D18] hover:bg-[#0D1F12] text-white px-10 py-6 text-lg rounded-full transition-all duration-300 hover:shadow-2xl"
           >
-            Prenez rendez-vous sur mesure
+            Parler de ma situation
           </button>
         </motion.div>
       </div>

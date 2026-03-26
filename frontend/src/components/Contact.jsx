@@ -72,7 +72,7 @@ export const Contact = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="section-title text-4xl md:text-5xl text-[#1A1A1A] text-center mb-6 font-playfair">
-            Prenez Rendez-vous
+            Parlons de votre situation
           </h2>
           <motion.p
             className="text-center text-[#1A1A1A]/70 mb-16 max-w-2xl mx-auto text-lg"
@@ -80,7 +80,7 @@ export const Contact = () => {
             animate={titleInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Commencez votre parcours d'excellence stratégique
+            Un premier échange de 30 minutes, sans engagement, pour comprendre où vous en êtes et ce qui peut être optimisé.
           </motion.p>
         </motion.div>
 
@@ -143,7 +143,7 @@ export const Contact = () => {
                   disabled={isLoading}
                   rows={5}
                   className="w-full border-[#D9C2A7]/50 focus:border-[#006618] transition-colors resize-none"
-                  placeholder="Décrivez brièvement votre projet de structuration..."
+                  placeholder="Décrivez votre situation actuelle : installation, association, projet de transmission, question sur votre structure..."
                   data-testid="contact-input-besoin"
                 />
               </motion.div>
@@ -185,7 +185,7 @@ export const Contact = () => {
             transition={{ duration: 0.7, delay: 0.4 }}
           >
             <h3 className="text-2xl font-playfair text-[#1A1A1A] mb-6">
-              Réservez votre créneau
+              Réserver un créneau d'échange
             </h3>
 
             {CALENDLY_URL ? (

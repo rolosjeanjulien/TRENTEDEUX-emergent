@@ -10,40 +10,40 @@ export const WhyUs = () => {
     {
       icon: Stethoscope,
       title: "Une expertise dédiée à l'écosystème dentaire",
-      description: ""
+      description: "Nous ne travaillons qu'avec des chirurgiens-dentistes et orthodontistes. Nous connaissons les spécificités des SEL dentaires, les contraintes ordinales, les schémas de cession et les réalités du cabinet de groupe."
     },
     {
       icon: Eye,
       title: "Une vision stratégique globale",
-      description: ""
+      description: "Nous ne traitons pas un sujet isolé. Nous construisons une architecture cohérente entre votre structure professionnelle, votre patrimoine personnel et vos objectifs à long terme."
     },
     {
       icon: Users,
       title: "Un pilotage coordonné et centralisé",
-      description: ""
+      description: "Nous coordonnons votre expert-comptable, votre notaire et les autres intervenants. Vous avez un seul interlocuteur qui pilote l'ensemble — pas quatre professionnels qui ne se parlent pas."
     },
     {
       icon: Lock,
       title: "Discrétion et exigence méthodologique",
-      description: ""
+      description: "Vos décisions structurelles sont sensibles. Nous travaillons dans la plus stricte confidentialité, avec une méthode rigoureuse et des livrables clairs à chaque étape."
     }
   ];
 
   const testimonials = [
     {
-      text: "Une approche structurée et rassurante.",
+      text: "Je n'avais jamais eu quelqu'un qui coordonne vraiment tout. Mon comptable faisait son côté, le notaire le sien. Trente Deux a mis tout le monde autour de la table.",
       author: "Dr. A.L.",
-      position: ""
+      position: "Chirurgien-dentiste, Paris"
     },
     {
-      text: "Une vision claire et méthodique.",
+      text: "Quand j'ai voulu intégrer un associé, j'avais peur de mal structurer les choses. Ils ont anticipé des situations que je n'avais même pas envisagées.",
       author: "Dr. S.D.",
-      position: ""
+      position: "Orthodontiste, Lyon"
     },
     {
-      text: "Un accompagnement parfaitement adapté à notre profession.",
+      text: "À six mois de la cession, j'ai réalisé que ma structure n'était pas optimisée. Trente Deux a redressé la situation et j'ai vendu dans de bien meilleures conditions.",
       author: "Dr. M.B.",
-      position: ""
+      position: "Chirurgien-dentiste, Bordeaux"
     }
   ];
 
@@ -94,7 +94,7 @@ export const WhyUs = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="section-title text-4xl md:text-5xl text-[#1A1A1A] text-center mb-6 font-playfair">
-            Ce qui nous distingue
+            Pourquoi Trente Deux
           </h2>
           <motion.div
             className="w-12 h-[1px] bg-[#006618] mx-auto mb-16"
@@ -126,9 +126,12 @@ export const WhyUs = () => {
                 <reason.icon className="w-7 h-7 text-[#006618]" strokeWidth={1.5} />
               </motion.div>
               <div>
-                <h3 className="text-lg font-playfair text-[#1A1A1A]">
+                <h3 className="text-lg font-playfair text-[#1A1A1A] mb-2">
                   {reason.title}
                 </h3>
+                <p className="text-sm text-[#1A1A1A]/60 leading-relaxed">
+                  {reason.description}
+                </p>
               </div>
             </motion.div>
           ))}

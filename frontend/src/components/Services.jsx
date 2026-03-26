@@ -9,23 +9,28 @@ export const Services = () => {
   const services = [
     {
       icon: FileText,
-      title: "Structuration de SEL et SPFPL",
+      title: "Création et structuration de SEL / SPFPL",
+      description: "Vous envisagez de passer en société ou de créer une holding dentaire ? Nous choisissons avec vous la forme la plus adaptée à votre situation et coordonnons la mise en place.",
     },
     {
       icon: Landmark,
-      title: "Organisation de holdings professionnelles",
+      title: "Holding dentaire : optimiser et protéger",
+      description: "Une holding bien conçue sépare les risques, optimise la remontée des bénéfices et prépare l'avenir. Nous en construisons l'architecture dès le départ.",
     },
     {
       icon: Handshake,
-      title: "Gouvernance et équilibres entre associés",
+      title: "Pactes d'associés et gouvernance du cabinet",
+      description: "Un cabinet à plusieurs associés sans règles claires, c'est un conflit en attente. Nous définissons les équilibres avant que les tensions apparaissent.",
     },
     {
       icon: ArrowRightLeft,
-      title: "Réorganisation capitalistique",
+      title: "Restructurer pour mieux valoriser",
+      description: "Votre structure actuelle ne correspond plus à votre situation ? Nous organisons la réorganisation sans rupture d'activité, en préservant la valeur que vous avez construite.",
     },
     {
       icon: Building2,
-      title: "Préparation stratégique de transmission",
+      title: "Transmettre au meilleur prix, au bon moment",
+      description: "La cession d'un cabinet dentaire ne s'improvise pas. Nous pilotons la préparation 2 à 5 ans en amont pour maximiser la valorisation et sécuriser la transition.",
     }
   ];
 
@@ -75,13 +80,13 @@ export const Services = () => {
             animate={titleInView ? { scaleX: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
           />
-          <motion.p 
+          <motion.p
             className="text-center text-[#1A1A1A]/70 mb-16 max-w-2xl mx-auto text-lg"
             initial={{ opacity: 0, y: 15, filter: "blur(4px)" }}
             animate={titleInView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Nous intervenons exclusivement dans l'écosystème des cabinets dentaires afin de garantir un niveau d'exigence élevé.
+            Cinq situations dans lesquelles nos clients nous ont dit : "J'aurais dû venir vous voir plus tôt."
           </motion.p>
         </motion.div>
 
@@ -100,22 +105,26 @@ export const Services = () => {
               whileHover={{ y: -6, scale: 1.03 }}
               data-testid={`service-card-${index}`}
             >
-              <div className="flex items-center gap-4">
-                <motion.div 
-                  className="icon-wrapper inline-flex items-center justify-center w-12 h-12 bg-[#006618]/10 rounded-full group-hover:bg-[#006618]/20 transition-all duration-300 shrink-0"
+              <div className="flex items-start gap-4 mb-4">
+                <motion.div
+                  className="icon-wrapper inline-flex items-center justify-center w-12 h-12 bg-[#006618]/10 rounded-full group-hover:bg-[#006618]/20 transition-all duration-300 shrink-0 mt-1"
                   whileHover={{ rotate: 10, scale: 1.1 }}
                 >
                   <service.icon className="w-6 h-6 text-[#006618]" strokeWidth={1.5} />
                 </motion.div>
 
-                <h3 className="text-lg font-playfair text-[#1A1A1A]">
-                  {service.title}
-                </h3>
+                <div>
+                  <h3 className="text-lg font-playfair text-[#1A1A1A] mb-2">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm text-[#1A1A1A]/60 leading-relaxed">
+                    {service.description}
+                  </p>
+                </div>
               </div>
 
-              {/* Hover reveal line */}
-              <motion.div 
-                className="mt-4 h-[1px] bg-[#006618]/30"
+              <motion.div
+                className="h-[1px] bg-[#006618]/30"
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
