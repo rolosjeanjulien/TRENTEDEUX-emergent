@@ -13,7 +13,7 @@ export const Journey = () => {
       title: "Installation",
       points: [
         "Vous vous installez, rejoignez une SEL ou créez une structure de groupe.",
-        "Nous définissons avec vous l'architecture la plus adaptée avant que les mauvais choix soient pris — et difficiles à corriger.",
+        "Nous définissons avec vous l'architecture la plus adaptée afin d'éviter les pièges difficiles à corriger.",
         "Statuts, répartition du capital, équilibres entre associés : tout est posé dès le départ.",
       ],
       footer: null
@@ -34,8 +34,8 @@ export const Journey = () => {
       number: "III",
       title: "Transmission",
       points: [
-        "Un cabinet mal structuré se vend significativement moins cher.",
-        "Que la transmission soit dans 2 ans ou dans 15 ans, elle se prépare maintenant.",
+        "Un cabinet mal structuré perd de la valeur.",
+        "Que la transmission soit dans 2 ans ou dans 15 ans, elle se prépare dès maintenant.",
         "Nous organisons votre sortie pour que vous en retiriez la valeur que vous avez construite.",
       ],
       footer: null
@@ -91,7 +91,7 @@ export const Journey = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <p className="text-center text-[#1A1A1A]/80 text-lg leading-relaxed">
-              Vous avez passé des années à construire votre cabinet. Mais entre les projets d'association, les questions sur votre holding, la préparation de la transmission et les équilibres entre associés, personne ne vous a encore donné une vision d'ensemble claire et coordonnée.
+              Vous avez passé des années à construire votre cabinet. Mais entre les projets d'association, les questions sur votre structuration, la préparation de la transmission et les équilibres entre associés, personne ne vous a encore donné une vision d'ensemble claire et coordonnée.
             </p>
             <p className="text-center text-[#1A1A1A]/70 text-lg leading-relaxed">
               C'est précisément ce que nous faisons.
