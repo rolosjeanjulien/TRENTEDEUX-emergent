@@ -79,7 +79,7 @@ export const Hero = ({ onContactClick }) => {
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.9, delay: 1.4 }}
         >
-          SEL, holding, pacte d'associés, transmission — nous construisons l'architecture que personne autour de vous ne coordonne vraiment.
+          SEL, holding, pacte d'associés, transmission, nous construisons l'architecture que personne autour de vous ne coordonne vraiment.
         </motion.p>
 
         <motion.div
@@ -94,7 +94,7 @@ export const Hero = ({ onContactClick }) => {
             data-testid="hero-cta-button"
             className="cta-button bg-[#122D18] hover:bg-[#0D1F12] text-white px-10 py-6 text-lg rounded-full transition-all duration-300 hover:shadow-2xl"
           >
-            Parler de ma situation
+            Discuter de ma situation ensemble
           </button>
         </motion.div>
       </div>
