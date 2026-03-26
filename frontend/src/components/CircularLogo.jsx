@@ -1,7 +1,7 @@
 import React from 'react';
 import './CircularLogo.css';
 
-export const CircularLogo = ({ size = 48, className = '' }) => {
+export const CircularLogo = ({ size = 54, className = '' }) => {
   const viewBox = 200;
   const center = viewBox / 2;
   const radius = 85;
