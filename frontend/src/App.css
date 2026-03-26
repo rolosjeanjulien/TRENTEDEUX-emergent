@@ -3,12 +3,13 @@
 /* Typography - Playfair Display for elegance */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
 
-/* Scroll Snap Container - mandatory pour un snap strict */
+/* Scroll Snap Container - proximity pour un snap doux et naturel */
 .App {
-    scroll-snap-type: y mandatory;
+    scroll-snap-type: y proximity;
     overflow-y: scroll;
     height: 100vh;
     scroll-padding-top: 70px;
+    scroll-behavior: smooth;
 }
 
 /* Scroll Snap Sections */
@@ -18,11 +19,10 @@
 .whyus-section,
 .contact-section {
     scroll-snap-align: start;
-    scroll-snap-stop: always;
     min-height: 100vh;
 }
 
-/* Footer devient une section snappable */
+/* Footer : snap léger, sans forcer 100vh */
 .footer {
     scroll-snap-align: start;
     min-height: 60vh;
