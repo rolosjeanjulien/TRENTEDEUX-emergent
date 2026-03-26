@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 
@@ -73,19 +74,19 @@ export const Footer = () => {
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="/mentions-legales.html" className="text-[#D9C2A7] hover:text-[#006618] transition-colors" data-testid="legal-mentions">
+                <Link to="/mentions-legales" className="text-[#D9C2A7] hover:text-[#006618] transition-colors" data-testid="legal-mentions">
                   Mentions légales
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/politique-de-confidentialite.html" className="text-[#D9C2A7] hover:text-[#006618] transition-colors" data-testid="legal-privacy">
+                <Link to="/politique-confidentialite" className="text-[#D9C2A7] hover:text-[#006618] transition-colors" data-testid="legal-privacy">
                   Politique de confidentialité
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/conditions-generales-utilisation.html" className="text-[#D9C2A7] hover:text-[#006618] transition-colors" data-testid="legal-cgu">
+                <Link to="/cgv" className="text-[#D9C2A7] hover:text-[#006618] transition-colors" data-testid="legal-cgu">
                   CGU
-                </a>
+                </Link>
               </li>
             </ul>
           </motion.div>

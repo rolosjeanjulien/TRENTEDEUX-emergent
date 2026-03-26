@@ -160,10 +160,12 @@ yarn test
 - [x] Pages légales statiques (Mentions légales, CGV, Politique de confidentialité)
 
 ### P1 — À faire (important)
-- [ ] Routing SPA fonctionnel pour les pages légales (react-router-dom v6)
-- [ ] Intégration Calendly (en attente du lien client)
-- [ ] Backend pour le formulaire de contact (FastAPI + MongoDB prévu)
-- [ ] Envoi d'email depuis le formulaire
+- [x] Routing SPA fonctionnel pour les pages légales (react-router-dom v6) — FAIT
+- [x] Structure Calendly intégrée (iframe activée via `REACT_APP_CALENDLY_URL`) — FAIT
+- [x] Structure Resend intégrée (serverless function `api/contact.js` + Contact.jsx connecté) — FAIT
+- [ ] Configurer Resend en production (voir `INTEGRATIONS.md`)
+- [ ] Fournir le lien Calendly (voir `INTEGRATIONS.md`)
+- [ ] Numéro de téléphone réel dans `Contact.jsx` (remplacer le placeholder)
 
 ### P2 — Nice to have
 - [ ] Analytics (Google Analytics ou Plausible)
@@ -172,6 +174,14 @@ yarn test
 - [ ] Multi-langue (FR/EN)
 
 ---
+
+## Nouveaux fichiers (mars 2026)
+
+| Fichier | Rôle |
+|---------|------|
+| `api/contact.js` | Serverless function Vercel — envoi email via Resend |
+| `.env.example` | Template des variables d'environnement à configurer |
+| `INTEGRATIONS.md` | Procédure complète Resend + Calendly |
 
 ## Points d'attention pour les modifications
 
