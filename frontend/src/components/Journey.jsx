@@ -66,7 +66,7 @@ export const Journey = () => {
   };
 
   return (
-    <section id="journey" className="journey-section py-24 bg-[#F5F1E9]" data-testid="journey-section">
+    <section id="journey" className="journey-section py-14 md:py-24 bg-[#F5F1E9]" data-testid="journey-section">
       <div className="container mx-auto px-6">
         {/* Mission Header */}
         <motion.div
@@ -85,7 +85,7 @@ export const Journey = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           />
           <motion.div 
-            className="max-w-3xl mx-auto mb-16 space-y-4"
+            className="max-w-3xl mx-auto mb-10 md:mb-16 space-y-4"
             initial={{ opacity: 0, y: 15, filter: "blur(4px)" }}
             animate={titleInView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -101,7 +101,7 @@ export const Journey = () => {
 
         {/* 3 Phases */}
         <motion.div 
-          className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto"
+          className="grid md:grid-cols-3 gap-6 md:gap-12 max-w-6xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           animate={titleInView ? "visible" : "hidden"}

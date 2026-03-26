@@ -63,7 +63,7 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="contact-section py-24 bg-white" data-testid="contact-section">
+    <section id="contact" className="contact-section py-14 md:py-24 bg-white" data-testid="contact-section">
       <div className="container mx-auto px-6">
         <motion.div
           ref={titleRef}
@@ -75,7 +75,7 @@ export const Contact = () => {
             Parlons de votre situation
           </h2>
           <motion.p
-            className="text-center text-[#1A1A1A]/70 mb-16 max-w-2xl mx-auto text-lg"
+            className="text-center text-[#1A1A1A]/70 mb-10 md:mb-16 max-w-2xl mx-auto text-lg"
             initial={{ opacity: 0, y: 15 }}
             animate={titleInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}

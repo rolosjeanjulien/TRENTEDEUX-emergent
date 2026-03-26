@@ -63,7 +63,7 @@ export const Services = () => {
   };
 
   return (
-    <section id="services" className="services-section py-24 bg-white" data-testid="services-section">
+    <section id="services" className="services-section py-14 md:py-24 bg-white" data-testid="services-section">
       <div className="container mx-auto px-6">
         <motion.div
           ref={titleRef}
@@ -81,7 +81,7 @@ export const Services = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           />
           <motion.p
-            className="text-center text-[#1A1A1A]/70 mb-16 max-w-2xl mx-auto text-lg"
+            className="text-center text-[#1A1A1A]/70 mb-10 md:mb-16 max-w-2xl mx-auto text-lg"
             initial={{ opacity: 0, y: 15, filter: "blur(4px)" }}
             animate={titleInView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -91,7 +91,7 @@ export const Services = () => {
         </motion.div>
 
         <motion.div 
-          className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-12"
+          className="grid md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto mb-8 md:mb-12"
           variants={containerVariants}
           initial="hidden"
           animate={titleInView ? "visible" : "hidden"}

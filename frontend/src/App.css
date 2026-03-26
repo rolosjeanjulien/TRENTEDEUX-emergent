@@ -238,4 +238,24 @@ body {
         overflow-x: hidden;
         max-width: 100vw;
     }
+
+    /* Désactiver le scroll-snap sur mobile : les sections ont des hauteurs variables
+       selon la taille de l'écran, le snap force du contenu hors champ */
+    .App {
+        scroll-snap-type: none;
+    }
+
+    /* Les sections prennent leur hauteur naturelle sur mobile */
+    .journey-section,
+    .services-section,
+    .whyus-section,
+    .contact-section {
+        scroll-snap-align: none;
+        min-height: auto;
+    }
+
+    .footer {
+        scroll-snap-align: none;
+        min-height: auto;
+    }
 }

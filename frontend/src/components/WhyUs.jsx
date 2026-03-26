@@ -71,7 +71,7 @@ export const WhyUs = () => {
   };
 
   return (
-    <section id="whyus" className="whyus-section py-24 bg-[#F5F1E9] relative overflow-hidden" data-testid="whyus-section">
+    <section id="whyus" className="whyus-section py-14 md:py-24 bg-[#F5F1E9] relative overflow-hidden" data-testid="whyus-section">
       {/* Background Image with Parallax */}
       <motion.div 
         className="absolute inset-0 z-0"
@@ -106,7 +106,7 @@ export const WhyUs = () => {
 
         {/* 4 Reasons Grid */}
         <motion.div 
-          className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-20"
+          className="grid md:grid-cols-2 gap-5 md:gap-8 max-w-5xl mx-auto mb-12 md:mb-20"
           variants={containerVariants}
           initial="hidden"
           animate={titleInView ? "visible" : "hidden"}
@@ -137,8 +137,27 @@ export const WhyUs = () => {
           ))}
         </motion.div>
 
+        {/* Separator — Ils nous font confiance */}
+        <motion.div
+          className="max-w-5xl mx-auto mb-16 flex flex-col items-center gap-5"
+          initial={{ opacity: 0, y: 20 }}
+          animate={titleInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.3 }}
+        >
+          <div className="w-full h-[1px] bg-[#D9C2A7]/50" />
+          <h3 className="text-2xl md:text-3xl font-playfair text-[#1A1A1A] tracking-wide text-center">
+            Ils nous font confiance
+          </h3>
+          <motion.div
+            className="w-8 h-[1px] bg-[#006618]"
+            initial={{ scaleX: 0 }}
+            animate={titleInView ? { scaleX: 1 } : {}}
+            transition={{ duration: 0.5, delay: 0.6 }}
+          />
+        </motion.div>
+
         {/* Testimonials */}
-        <motion.div 
+        <motion.div
           className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto"
           variants={containerVariants}
           initial="hidden"
