@@ -27,7 +27,7 @@ export const MentionsLegales = () => {
               1. Éditeur du site
             </h2>
             <p className="mb-2">
-              Le site <strong>trente-deux-conseil.preview.emergentagent.com</strong> est édité par :
+              Le site <strong>trentedeux.fr</strong> est édité par :
             </p>
             <ul className="list-none space-y-1 ml-4">
               <li><strong>Raison sociale :</strong> Trente Deux</li>
@@ -60,9 +60,9 @@ export const MentionsLegales = () => {
               Le site est hébergé par :
             </p>
             <ul className="list-none space-y-1 ml-4">
-              <li><strong>Emergent Agent</strong></li>
-              <li>Adresse : [À compléter]</li>
-              <li>Contact : [À compléter]</li>
+              <li><strong>Vercel Inc.</strong></li>
+              <li>340 Pine Street, Suite 701, San Francisco, CA 94104, USA</li>
+              <li>Contact : <a href="https://vercel.com/support" className="text-[#006618] hover:underline">vercel.com/support</a></li>
             </ul>
           </section>
 

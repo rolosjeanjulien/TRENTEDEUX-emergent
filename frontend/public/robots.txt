@@ -1,5 +1,5 @@
 # Robots.txt pour Trente Deux
-# https://luxury-legal-preview.preview.emergentagent.com/robots.txt
+# https://trentedeux.fr/robots.txt
 
 User-agent: *
 Allow: /
@@ -8,7 +8,7 @@ Disallow: /admin/
 Disallow: /*.json$
 
 # Sitemap
-Sitemap: https://luxury-legal-preview.preview.emergentagent.com/sitemap.xml
+Sitemap: https://trentedeux.fr/sitemap.xml
 
 # Crawl delay (optionnel)
 Crawl-delay: 1

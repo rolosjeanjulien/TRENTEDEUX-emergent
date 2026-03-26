@@ -5,11 +5,11 @@ export const SEO = ({
   title = "Trente Deux - Structuration Stratégique pour Chirurgiens-Dentistes",
   description = "Maison de structuration stratégique pour chirurgiens-dentistes et orthodontistes. Organisation de holdings, gouvernance, pactes d'associés, transmission.",
   keywords = "structuration cabinet dentaire, holding dentaire, SELARL dentiste, SPFPL dentaire, pacte associés orthodontiste, transmission cabinet dentaire, structuration stratégique",
-  ogImage = "https://luxury-legal-preview.preview.emergentagent.com/og-image.jpg",
+  ogImage = "https://trentedeux.fr/og-image.jpg",
   canonicalUrl,
   type = "website"
 }) => {
-  const siteUrl = "https://luxury-legal-preview.preview.emergentagent.com";
+  const siteUrl = "https://trentedeux.fr";
   const fullUrl = canonicalUrl || siteUrl;
 
   // Schema.org structured data pour les services juridiques
