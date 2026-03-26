@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
-import { useToast } from '../hooks/use-toast';
+import { toast } from 'sonner';
 import { Mail, Phone } from 'lucide-react';
 import { useInView } from '../hooks/useInView';
 
@@ -11,7 +11,6 @@ const CALENDLY_URL = process.env.REACT_APP_CALENDLY_URL;
 const API_URL = process.env.REACT_APP_API_URL || '';
 
 export const Contact = () => {
-  const { toast } = useToast();
   const [titleRef, titleInView] = useInView({ threshold: 0.15, once: true });
   const [formData, setFormData] = useState({
     nom: '',
@@ -43,8 +42,7 @@ export const Contact = () => {
         throw new Error('Erreur lors de l\'envoi. Veuillez réessayer.');
       }
 
-      toast({
-        title: "Demande envoyée",
+      toast.success("Demande envoyée", {
         description: "Nous vous recontacterons dans les plus brefs délais.",
       });
       setFormData({ nom: '', cabinet: '', email: '', besoin: '' });
