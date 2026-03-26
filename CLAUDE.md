@@ -41,7 +41,12 @@ Doit apparaître en footer uniquement :
 ```
 TRENTEDEUX-emergent/
 ├── CLAUDE.md                    # Ce fichier
+├── INTEGRATIONS.md              # Procédure Resend + Calendly
 ├── README.md
+├── vercel.json                  # Configuration déploiement Vercel (OBLIGATOIRE)
+├── .env.example                 # Template variables d'environnement
+├── api/
+│   └── contact.js               # Serverless function Vercel — envoi email Resend
 ├── memory/
 │   └── PRD.md                   # Product Requirements Document complet
 └── frontend/                    # Application React
@@ -50,12 +55,11 @@ TRENTEDEUX-emergent/
     ├── craco.config.js           # Alias @ → src/
     ├── public/
     └── src/
-        ├── index.js
+        ├── index.js              # BrowserRouter ici
         ├── index.css             # Tailwind base + thème CSS
-        ├── App.js
+        ├── App.js                # Routes React Router (/, /mentions-legales, etc.)
         ├── App.css               # Scroll-snap, animations globales
         ├── pages/
-        │   ├── HomePage.jsx      # Page principale (landing page)
         │   ├── MentionsLegales.jsx
         │   ├── PolitiqueConfidentialite.jsx
         │   └── CGV.jsx
@@ -65,8 +69,8 @@ TRENTEDEUX-emergent/
         │   ├── Journey.jsx       # Mission & 3 phases
         │   ├── Services.jsx      # 5 domaines d'intervention
         │   ├── WhyUs.jsx         # Différenciation + témoignages
-        │   ├── Contact.jsx       # Formulaire + Calendly placeholder
-        │   ├── Footer.jsx        # Footer + liens légaux
+        │   ├── Contact.jsx       # Formulaire (POST /api/contact) + embed Calendly
+        │   ├── Footer.jsx        # Footer + liens légaux (React Router Link)
         │   ├── SEO.jsx           # Meta tags + Schema.org
         │   ├── CircularLogo.jsx  # Logo SVG animé rotatif
         │   ├── CircularLogo.css
@@ -129,6 +133,45 @@ TRENTEDEUX-emergent/
 
 ---
 
+## Déploiement — Vercel (OBLIGATOIRE)
+
+Ce projet est **exclusivement déployé sur Vercel**. Ne pas tenter de déployer sur Netlify, GitHub Pages ou autre sans adapter la configuration.
+
+### Pourquoi Vercel est requis
+- La serverless function `api/contact.js` est au format Vercel (CommonJS, `module.exports`)
+- `vercel.json` à la racine configure le build, l'outputDirectory et les rewrites SPA
+- Les variables d'environnement `RESEND_*` sont gérées dans le dashboard Vercel
+
+### Configuration Vercel (vercel.json)
+```json
+{
+  "buildCommand": "cd frontend && yarn build",
+  "outputDirectory": "frontend/build",
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
+```
+
+- **buildCommand** : build depuis le sous-dossier `frontend/`
+- **outputDirectory** : sortie du build CRA
+- **rewrites** : routes SPA → `index.html` (évite les 404 au rechargement direct)
+
+### Variables d'environnement à configurer dans Vercel
+Aller dans **Vercel Dashboard → Project → Settings → Environment Variables** :
+
+| Variable | Valeur | Requis pour |
+|----------|--------|-------------|
+| `RESEND_API_KEY` | `re_xxxx...` | Formulaire de contact |
+| `RESEND_FROM_EMAIL` | `Trente Deux <no-reply@trentedeux.fr>` | Formulaire de contact |
+| `RESEND_TO_EMAIL` | `contact@trentedeux.fr` | Formulaire de contact |
+| `REACT_APP_CALENDLY_URL` | URL Calendly | Bloc RDV en ligne |
+
+> Voir `INTEGRATIONS.md` pour la procédure complète.
+
+---
+
 ## Commandes de développement
 
 ```bash
@@ -146,6 +189,8 @@ yarn test
 ```
 
 **Alias disponible** : `@` → `src/` (configuré dans craco.config.js)
+
+> Pour tester les serverless functions en local, utiliser `vercel dev` à la racine du projet (nécessite la Vercel CLI : `npm i -g vercel`).
 
 ---
 
@@ -175,10 +220,11 @@ yarn test
 
 ---
 
-## Nouveaux fichiers (mars 2026)
+## Fichiers de configuration clés
 
 | Fichier | Rôle |
 |---------|------|
+| `vercel.json` | Config déploiement Vercel (build, outputDir, rewrites SPA) |
 | `api/contact.js` | Serverless function Vercel — envoi email via Resend |
 | `.env.example` | Template des variables d'environnement à configurer |
 | `INTEGRATIONS.md` | Procédure complète Resend + Calendly |
@@ -187,10 +233,11 @@ yarn test
 
 1. **Scroll-snap** activé sur les sections principales dans `App.css` — ne pas supprimer sans vérifier l'impact sur l'UX
 2. **Logo circulaire SVG** avec rotation CSS dans `CircularLogo.css` — modifier avec précaution
-3. **Formulaire de contact** est actuellement mocké (toast uniquement) — ne pas connecter de vrai backend sans configuration
+3. **Formulaire de contact** fait un `POST /api/contact` (serverless Vercel + Resend) — fonctionnel uniquement si les variables `RESEND_*` sont configurées dans Vercel
 4. **Image hero** provient d'Unsplash via URL externe — à remplacer par un asset local pour la production
-5. **Téléphone de contact** est un placeholder (`+33 (0)1 XX XX XX XX`) — à remplacer par le vrai numéro
-6. **Calendly** est un placeholder — attendre le lien du client avant d'intégrer
+5. **Téléphone de contact** est un placeholder (`+33 (0)1 XX XX XX XX`) dans `Contact.jsx` — à remplacer par le vrai numéro
+6. **Calendly** s'affiche automatiquement si `REACT_APP_CALENDLY_URL` est définie, sinon affiche un placeholder discret
+7. **Ne jamais pusher `.env.local`** — le fichier est dans `.gitignore`, utiliser `.env.example` comme référence
 
 ---
 
