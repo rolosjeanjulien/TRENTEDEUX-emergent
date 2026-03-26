@@ -6,6 +6,7 @@ import { Hero } from "./components/Hero";
 import { Journey } from "./components/Journey";
 import { Services } from "./components/Services";
 import { WhyUs } from "./components/WhyUs";
+import { Testimonials } from "./components/Testimonials";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import { Toaster } from "./components/ui/sonner";
@@ -27,6 +28,7 @@ function HomePage() {
       <Journey />
       <Services />
       <WhyUs />
+      <Testimonials />
       <div ref={contactRef}>
         <Contact />
       </div>

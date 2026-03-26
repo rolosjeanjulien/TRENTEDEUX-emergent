@@ -233,6 +233,7 @@ body {
     .journey-section,
     .services-section,
     .whyus-section,
+    #testimonials,
     .contact-section,
     .footer {
         overflow-x: hidden;
@@ -249,6 +250,7 @@ body {
     .journey-section,
     .services-section,
     .whyus-section,
+    #testimonials,
     .contact-section {
         scroll-snap-align: none;
         min-height: auto;
