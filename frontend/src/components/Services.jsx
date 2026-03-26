@@ -86,7 +86,7 @@ export const Services = () => {
         </motion.div>
 
         <motion.div 
-          className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-12"
+          className="grid md:grid-cols-4 gap-6 max-w-5xl mx-auto mb-12"
           variants={containerVariants}
           initial="hidden"
           animate={titleInView ? "visible" : "hidden"}
