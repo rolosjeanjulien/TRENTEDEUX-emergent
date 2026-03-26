@@ -4,8 +4,11 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { useToast } from '../hooks/use-toast';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone } from 'lucide-react';
 import { useInView } from '../hooks/useInView';
+
+const CALENDLY_URL = process.env.REACT_APP_CALENDLY_URL;
+const API_URL = process.env.REACT_APP_API_URL || '';
 
 export const Contact = () => {
   const { toast } = useToast();
@@ -16,21 +19,40 @@ export const Contact = () => {
     email: '',
     besoin: ''
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    if (submitError) setSubmitError(null);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    toast({
-      title: "Demande envoyée",
-      description: "Nous vous recontacterons dans les plus brefs délais.",
-    });
-    setFormData({ nom: '', cabinet: '', email: '', besoin: '' });
+    setIsLoading(true);
+    setSubmitError(null);
+
+    try {
+      const response = await fetch(`${API_URL}/api/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Erreur lors de l\'envoi. Veuillez réessayer.');
+      }
+
+      toast({
+        title: "Demande envoyée",
+        description: "Nous vous recontacterons dans les plus brefs délais.",
+      });
+      setFormData({ nom: '', cabinet: '', email: '', besoin: '' });
+    } catch (err) {
+      setSubmitError(err.message || 'Une erreur est survenue. Veuillez réessayer ou nous contacter par email.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const formFieldVariants = {
@@ -38,11 +60,7 @@ export const Contact = () => {
     visible: (i) => ({
       opacity: 1,
       x: 0,
-      transition: {
-        delay: 0.15 * i,
-        duration: 0.5,
-        ease: "easeOut"
-      }
+      transition: { delay: 0.15 * i, duration: 0.5, ease: "easeOut" }
     })
   };
 
@@ -58,19 +76,19 @@ export const Contact = () => {
           <h2 className="section-title text-4xl md:text-5xl text-[#1A1A1A] text-center mb-6 font-playfair">
             Prenez Rendez-vous
           </h2>
-          <motion.p 
+          <motion.p
             className="text-center text-[#1A1A1A]/70 mb-16 max-w-2xl mx-auto text-lg"
             initial={{ opacity: 0, y: 15 }}
             animate={titleInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Commencez votre parcours d'excellence juridique
+            Commencez votre parcours d'excellence stratégique
           </motion.p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
-          <motion.div 
+          <motion.div
             className="contact-form-wrapper"
             initial={{ opacity: 0, x: -40 }}
             animate={titleInView ? { opacity: 1, x: 0 } : {}}
@@ -79,14 +97,14 @@ export const Contact = () => {
             <h3 className="text-2xl font-playfair text-[#1A1A1A] mb-6">
               Formulaire de contact
             </h3>
-            
+
             <form onSubmit={handleSubmit} className="space-y-6" data-testid="contact-form">
               {[
                 { label: "Nom complet *", type: "text", name: "nom", placeholder: "Dr. Prénom Nom" },
                 { label: "Nom du cabinet *", type: "text", name: "cabinet", placeholder: "Cabinet Dentaire..." },
                 { label: "Email professionnel *", type: "email", name: "email", placeholder: "contact@cabinet.fr" }
               ].map((field, i) => (
-                <motion.div 
+                <motion.div
                   key={field.name}
                   custom={i}
                   variants={formFieldVariants}
@@ -96,12 +114,13 @@ export const Contact = () => {
                   <label className="block text-[#1A1A1A] mb-2 font-light">
                     {field.label}
                   </label>
-                  <Input 
+                  <Input
                     type={field.type}
                     name={field.name}
                     value={formData[field.name]}
                     onChange={handleChange}
                     required
+                    disabled={isLoading}
                     className="w-full border-[#D9C2A7]/50 focus:border-[#006618] transition-colors"
                     placeholder={field.placeholder}
                     data-testid={`contact-input-${field.name}`}
@@ -118,11 +137,12 @@ export const Contact = () => {
                 <label className="block text-[#1A1A1A] mb-2 font-light">
                   Votre besoin *
                 </label>
-                <Textarea 
+                <Textarea
                   name="besoin"
                   value={formData.besoin}
                   onChange={handleChange}
                   required
+                  disabled={isLoading}
                   rows={5}
                   className="w-full border-[#D9C2A7]/50 focus:border-[#006618] transition-colors resize-none"
                   placeholder="Décrivez brièvement votre projet de structuration..."
@@ -130,26 +150,37 @@ export const Contact = () => {
                 />
               </motion.div>
 
+              {submitError && (
+                <motion.p
+                  className="text-red-600 text-sm"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                >
+                  {submitError}
+                </motion.p>
+              )}
+
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={titleInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.8 }}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={!isLoading ? { scale: 1.02 } : {}}
+                whileTap={!isLoading ? { scale: 0.98 } : {}}
               >
-                <Button 
+                <Button
                   type="submit"
+                  disabled={isLoading}
                   data-testid="contact-submit-button"
-                  className="w-full bg-[#122D18] hover:bg-[#0D1F12] text-white py-6 rounded-full transition-all duration-300 hover:shadow-xl"
+                  className="w-full bg-[#122D18] hover:bg-[#0D1F12] text-white py-6 rounded-full transition-all duration-300 hover:shadow-xl disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  Envoyer ma demande
+                  {isLoading ? 'Envoi en cours...' : 'Envoyer ma demande'}
                 </Button>
               </motion.div>
             </form>
           </motion.div>
 
-          {/* Calendly Integration */}
-          <motion.div 
+          {/* Calendly / RDV */}
+          <motion.div
             className="calendly-wrapper"
             initial={{ opacity: 0, x: 40 }}
             animate={titleInView ? { opacity: 1, x: 0 } : {}}
@@ -158,32 +189,28 @@ export const Contact = () => {
             <h3 className="text-2xl font-playfair text-[#1A1A1A] mb-6">
               Réservez votre créneau
             </h3>
-            
-            <div className="calendly-embed-container bg-[#F5F1E9]/30 rounded-sm border border-[#D9C2A7]/30 p-8 min-h-[500px] flex flex-col items-center justify-center">
-              <p className="text-[#1A1A1A]/70 mb-4 text-center">
-                Calendly sera intégré ici avec votre lien personnel
-              </p>
-              <p className="text-[#1A1A1A]/50 text-sm text-center">
-                Remplacez le lien dans le code par votre URL Calendly
-              </p>
-              
-              <motion.div 
-                className="mt-6 w-full max-w-md"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={titleInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ delay: 0.7, duration: 0.5 }}
-              >
-                <div className="bg-white/50 backdrop-blur-sm rounded-sm border border-[#006618]/20 p-6 text-center">
-                  <MapPin className="w-8 h-8 text-[#006618] mx-auto mb-3" />
-                  <p className="text-sm text-[#1A1A1A]/70">
-                    Intégration Calendly activée
-                  </p>
-                </div>
-              </motion.div>
-            </div>
+
+            {CALENDLY_URL ? (
+              <iframe
+                src={CALENDLY_URL}
+                title="Calendly - Prise de rendez-vous"
+                className="w-full rounded-sm border border-[#D9C2A7]/30"
+                style={{ minHeight: '500px', border: 'none' }}
+                loading="lazy"
+              />
+            ) : (
+              <div className="bg-[#F5F1E9]/30 rounded-sm border border-[#D9C2A7]/30 p-8 min-h-[500px] flex flex-col items-center justify-center">
+                <p className="text-[#1A1A1A]/60 text-center text-sm">
+                  La prise de rendez-vous en ligne sera disponible prochainement.
+                </p>
+                <p className="text-[#1A1A1A]/40 text-xs text-center mt-2">
+                  En attendant, utilisez le formulaire ci-contre ou contactez-nous par email.
+                </p>
+              </div>
+            )}
 
             {/* Contact Info */}
-            <motion.div 
+            <motion.div
               className="mt-8 space-y-4"
               initial={{ opacity: 0 }}
               animate={titleInView ? { opacity: 1 } : {}}
