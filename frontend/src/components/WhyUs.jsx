@@ -20,7 +20,7 @@ export const WhyUs = () => {
     {
       icon: Users,
       title: "Un pilotage coordonné et centralisé",
-      description: "Nous coordonnons votre expert-comptable, votre notaire et les autres intervenants. Vous avez un seul interlocuteur qui pilote l'ensemble — pas quatre professionnels qui ne se parlent pas."
+      description: "Nous coordonnons votre expert-comptable, votre notaire et les autres intervenants. Vous avez un seul interlocuteur qui pilote l'ensemble, pas quatre professionnels qui ne se parlent pas."
     },
     {
       icon: Lock,
@@ -137,6 +137,24 @@ export const WhyUs = () => {
           ))}
         </motion.div>
 
+ <div className="container mx-auto px-6 relative z-10">
+        <motion.div
+          ref={titleRef}
+          initial={{ opacity: 0, y: 30 }}
+          animate={titleInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="section-title text-4xl md:text-5xl text-[#1A1A1A] text-center mb-6 font-playfair">
+            Ils nous ont déjà fait confiance et nous recommande
+          </h2>
+          <motion.div
+            className="w-12 h-[1px] bg-[#006618] mx-auto mb-16"
+            initial={{ scaleX: 0 }}
+            animate={titleInView ? { scaleX: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          />
+        </motion.div>
+        
         {/* Testimonials */}
         <motion.div 
           className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto"
