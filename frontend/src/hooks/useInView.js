@@ -20,13 +20,14 @@ export const useInView = (options = {}) => {
       rootMargin: options.rootMargin || '0px'
     });
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    const el = ref.current;
+    if (el) {
+      observer.observe(el);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (el) {
+        observer.unobserve(el);
       }
     };
   }, [options.threshold, options.rootMargin, options.once]);
